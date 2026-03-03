@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Creative Developer | Scrollytelling Portfolio",
+  title: "Creative Director | Kashyap Rathod",
   description: "High-end scrollytelling personal portfolio website.",
 };
 
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <CustomCursor />
           <Navbar />
           <ThemeToggle />
           {children}

@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <Overlay />
       </div>
-      <About />
+      <About hidePhoto={true} />
       <Partners />
       <Projects />
       <Contact />
