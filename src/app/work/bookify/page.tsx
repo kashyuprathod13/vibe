@@ -20,7 +20,7 @@ export default function BookifyCaseStudy() {
                 <Link href="/work" className="text-xs font-semibold tracking-[0.2em] uppercase text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors mb-12 inline-flex items-center gap-2">
                     <span>←</span> Back to Work
                 </Link>
-                
+
                 {/* Hero Section */}
                 <header className="mb-20">
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight mb-8 leading-[1.1]">
@@ -30,7 +30,7 @@ export default function BookifyCaseStudy() {
                         Read more. Earn more. Together.
                     </p>
                 </header>
-                
+
                 {/* Project Meta Info */}
                 <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 mb-20 border-y border-black/10 dark:border-white/10 py-10 w-fit md:w-full max-w-full overflow-hidden">
                     <div className="shrink-0">
@@ -62,7 +62,7 @@ export default function BookifyCaseStudy() {
                         className="object-cover object-top"
                     />
                 </div>
-                
+
                 {/* Main Content with Sticky Sidebar */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative items-start">
                     {/* Left Sidebar */}
@@ -79,7 +79,7 @@ export default function BookifyCaseStudy() {
 
                     {/* Right Content */}
                     <div className="lg:col-span-9 space-y-32">
-                        
+
                         {/* Section: Why This Matters */}
                         <section id="why-this-matters" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">Why This Matters</h2>
@@ -119,14 +119,14 @@ export default function BookifyCaseStudy() {
                                 </ul>
                             </div>
                         </section>
-                        
+
                         {/* Section: Process */}
                         <section id="process" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">Process</h2>
                             <p className="text-lg md:text-xl font-light leading-relaxed text-black/80 dark:text-white/80 mb-12 max-w-4xl">
                                 The project followed a five-step framework: Observe, Define, Ideate, Design, and Validate.
                             </p>
-                            
+
                             <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
                                 <div className="bg-black/5 dark:bg-white/5 p-6 rounded-2xl">
                                     <h4 className="text-sm font-semibold tracking-[0.2em] uppercase text-black/50 dark:text-white/50 mb-2">Step 1</h4>
@@ -154,7 +154,7 @@ export default function BookifyCaseStudy() {
                         {/* Section: Observe */}
                         <section id="observe" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">Observe</h2>
-                            
+
                             <div className="space-y-16">
                                 <div>
                                     <h3 className="text-2xl font-medium tracking-tight mb-6">User Interviews</h3>
@@ -166,7 +166,7 @@ export default function BookifyCaseStudy() {
                                         <p className="text-black/70 dark:text-white/70 font-light">Ages 20 to 40, tech-savvy, regularly use mobile devices, Kindles, or reading apps.</p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div>
                                         <h3 className="text-xl font-medium tracking-tight mb-6">Key Takeaways</h3>
@@ -187,11 +187,11 @@ export default function BookifyCaseStudy() {
                                 </div>
                             </div>
                         </section>
-                        
+
                         {/* Section: Define */}
                         <section id="define" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">Define</h2>
-                            
+
                             <div className="space-y-16">
                                 <div>
                                     <h3 className="text-2xl font-medium tracking-tight mb-6">Personas</h3>
@@ -218,7 +218,7 @@ export default function BookifyCaseStudy() {
                                 </div>
                             </div>
                         </section>
-                        
+
                         {/* Section: Ideate */}
                         <section id="ideate" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">Ideate</h2>
@@ -248,8 +248,8 @@ export default function BookifyCaseStudy() {
                         {/* Section: Design */}
                         <section id="design" className="scroll-mt-32">
                             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-12">Design</h2>
-                            
-                            <AlternatingFeatureGallery 
+
+                            <AlternatingFeatureGallery
                                 sections={[
                                     {
                                         id: "my-points",
@@ -370,7 +370,7 @@ export default function BookifyCaseStudy() {
                             <p className="text-lg md:text-xl font-light leading-relaxed text-black/80 dark:text-white/80 mb-10 max-w-4xl">
                                 I conducted usability testing with ten users matching the target profile. They interacted with a clickable prototype covering the Read Along feature and the points earning flow.
                             </p>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="bg-emerald-50 dark:bg-emerald-900/10 p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800/20">
                                     <h4 className="font-medium text-emerald-900 dark:text-emerald-100 flex items-center gap-2 mb-4">✅ What worked well:</h4>
@@ -393,11 +393,11 @@ export default function BookifyCaseStudy() {
 
                                 <ul className="space-y-6 text-base md:text-lg font-light leading-relaxed text-blue-800 dark:text-blue-200/80 list-none ml-0">
                                     <li className="flex gap-4 items-start">
-                                        <span className="bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold mt-1">1</span> 
+                                        <span className="bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold mt-1">1</span>
                                         <p><strong>What I would do differently:</strong> the Read Along feature deserved its own design sprint. It tested as the strongest concept but was designed in parallel with everything else. Given its impact on retention potential, it warranted deeper exploration of edge cases, notification design, and group dynamics.</p>
                                     </li>
                                     <li className="flex gap-4 items-start">
-                                        <span className="bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold mt-1">2</span> 
+                                        <span className="bg-blue-200 dark:bg-blue-800 text-blue-900 dark:text-blue-100 w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold mt-1">2</span>
                                         <p><strong>A future iteration</strong> should also explore how the leaderboard and community features could surface more prominently, since social proof was one of the strongest motivators uncovered in research.</p>
                                     </li>
                                 </ul>
@@ -409,9 +409,12 @@ export default function BookifyCaseStudy() {
 
                 {/* Footer Outro */}
                 <div className="text-center py-20 border-t border-black/10 dark:border-white/10 mt-32">
-                    <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8">Thank you for reading!</h2>
-                    <Link href="/work" className="inline-flex items-center justify-center px-8 py-4 bg-black text-white dark:bg-white dark:text-black rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-transform">
-                        Explore More Work
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight mb-12 text-black/90 dark:text-white/90">Thank you for reading!</h2>
+                    <Link
+                        href="/work"
+                        className="text-xs font-semibold tracking-[0.2em] uppercase text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors border-b border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white pb-0.5"
+                    >
+                        Explore More Work →
                     </Link>
                 </div>
             </div>

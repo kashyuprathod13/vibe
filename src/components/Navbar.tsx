@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
-const navItems = ["HOME", "ABOUT", "WORK"];
+const navItems = ["HOME", "ABOUT", "WORK", "TRAVEL"];
 
 export default function Navbar() {
     const router = useRouter();
@@ -25,6 +25,9 @@ export default function Navbar() {
         if (pathname === "/about") {
             setActive("ABOUT");
             setIsPastHero(true); // Always solid background on other pages
+        } else if (pathname === "/travel") {
+            setActive("TRAVEL");
+            setIsPastHero(true);
         } else if (pathname.startsWith("/work")) {
             setActive("WORK");
             setIsPastHero(true);
@@ -68,6 +71,11 @@ export default function Navbar() {
             } else {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             }
+            return;
+        }
+
+        if (item === "TRAVEL") {
+            router.push("/travel");
             return;
         }
 

@@ -169,9 +169,12 @@ export default function MicrosoftCaseStudy() {
 
                 {/* Footer Outro */}
                 <div className="text-center py-20 border-t border-black/10 dark:border-white/10 mt-32">
-                    <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8">Thank you for reading!</h2>
-                    <Link href="/work" className="inline-flex items-center justify-center px-8 py-4 bg-black text-white dark:bg-white dark:text-black rounded-full text-sm font-semibold tracking-wide hover:scale-105 transition-transform">
-                        Explore More Work
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight mb-12 text-black/90 dark:text-white/90">Thank you for reading!</h2>
+                    <Link
+                        href="/work"
+                        className="text-xs font-semibold tracking-[0.2em] uppercase text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white transition-colors border-b border-black/20 dark:border-white/20 hover:border-black dark:hover:border-white pb-0.5"
+                    >
+                        Explore More Work →
                     </Link>
                 </div>
             </div>

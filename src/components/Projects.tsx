@@ -56,14 +56,34 @@ export default function Projects({ limit, hideSeeAll }: ProjectsProps = {}) {
 
                                     {/* Content layer */}
                                     <div className="absolute inset-0 p-8 flex flex-col justify-between z-20">
-                                        {/* Top: Title */}
-                                        <h3 className="text-base font-medium tracking-wide text-white leading-snug max-w-[85%]">
-                                            {project.title}
-                                        </h3>
+                                        {/* Top: Title & NDA Chip */}
+                                        <div className="flex flex-col gap-3 items-start">
+                                            {project.isNDA && (
+                                                <div className="px-3 py-1 rounded-lg bg-white/90 backdrop-blur-sm border border-black/5 text-[9px] font-bold tracking-[0.05em] text-black">
+                                                    NDA
+                                                </div>
+                                            )}
+                                            <h3 className="text-base font-medium tracking-wide text-white leading-snug max-w-[85%]">
+                                                {project.title}
+                                            </h3>
+                                        </div>
 
-                                        {/* Bottom: Year */}
-                                        <div className="text-white/60 text-sm font-medium tracking-[0.2em]">
-                                            {project.year}
+                                        {/* Bottom section: Stats + Year */}
+                                        <div className="mt-auto flex flex-col gap-6">
+                                            {project.stat && (
+                                                <div className="flex flex-col items-start gap-1">
+                                                    <span className="text-4xl md:text-5xl font-extralight tracking-tighter text-white">
+                                                        {project.stat.value}
+                                                    </span>
+                                                    <span className="text-[10px] md:text-xs font-medium tracking-[0.1em] text-white/70 uppercase max-w-[140px] leading-tight">
+                                                        {project.stat.label}
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            <div className="text-white/60 text-sm font-medium tracking-[0.2em]">
+                                                {project.year}
+                                            </div>
                                         </div>
                                     </div>
 
