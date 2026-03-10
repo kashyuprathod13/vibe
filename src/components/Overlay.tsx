@@ -1,78 +1,65 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useState, useEffect } from "react";
+
+function TypingText({ message, progress }: { message: string, progress: MotionValue<number> }) {
+    const [displayContent, setDisplayContent] = useState("");
+
+    useEffect(() => {
+        const unsubscribe = progress.on("change", (latest) => {
+            setDisplayContent(message.slice(0, Math.floor(latest)));
+        });
+        // Initial sync
+        setDisplayContent(message.slice(0, Math.floor(progress.get())));
+        return () => unsubscribe();
+    }, [message, progress]);
+
+    return <span>{displayContent}</span>;
+}
 
 export default function Overlay() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"],
-    });
+    const { scrollYProgress } = useScroll();
 
-    // Section 1: 0% to 20% Fade out
-    const opacity1 = useTransform(scrollYProgress, [0, 0.15, 0.2], [1, 1, 0]);
-    const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+    // Section 1: 0% to 10% Fade out for the name
+    // Explicitly keep it 0 after 0.1 to avoid any persistence
+    const opacity1 = useTransform(scrollYProgress, [0, 0.05, 0.1, 1], [1, 1, 0, 0]);
+    const display1 = useTransform(opacity1, (o) => o <= 0 ? "none" : "flex");
+    const y1 = useTransform(scrollYProgress, [0, 0.1], [0, -50]);
 
-    // We make the pointer-events-none so it doesn't block scrolling on the canvas, 
-    // but if you have buttons later, you'd need pointer-events-auto on the children.
+    // Typing Message
+    const message = "I design with the assumption that people are busy, tired, and deserve better.";
+    // Ensure visibility only between 11% and 25%
+    const messageOpacity = useTransform(scrollYProgress, [0.08, 0.11, 0.22, 0.25, 0.3], [0, 1, 1, 0, 0]);
+    const messageDisplay = useTransform(messageOpacity, (o) => o <= 0 ? "none" : "flex");
+    const typingProgress = useTransform(scrollYProgress, [0.11, 0.16], [0, message.length]);
+    
+    // We make the pointer-events-none so it doesn't block scrolling on the canvas
     return (
-        <div ref={containerRef} className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none z-20 font-sans">
             <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center text-white p-8">
 
-                {/* Hero Layout Container - Matching the reference image structure */}
+                {/* Typing Message Reveal at 11% */}
                 <motion.div
-                    style={{ opacity: opacity1, y: y1 }}
-                    className="absolute inset-0 flex flex-col justify-between p-6 md:p-12 pb-24"
+                    style={{ opacity: messageOpacity, display: messageDisplay }}
+                    className="absolute inset-0 flex items-center justify-center p-8 text-center pointer-events-none z-50"
                 >
-                    {/* Top Row: Small tracking copy */}
-                    <div className="flex justify-between items-start w-full">
-                        <div className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/50 max-w-[200px] leading-tight mt-16 lg:mt-32">
-                            Strategy is where digital systems are designed, deployed, and scaled
-                        </div>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-white max-w-5xl leading-[1.1] relative font-sans">
+                        <TypingText message={message} progress={typingProgress} />
+                    </h2>
+                </motion.div>
+
+                {/* Hero Layout Container - Concentrated on the Name */}
+                <motion.div
+                    style={{ opacity: opacity1, y: y1, display: display1 }}
+                    className="absolute inset-0 flex flex-col justify-center items-center p-6 md:p-12"
+                >
+                    {/* Massive "SEKO" style title */}
+                    <div className="overflow-visible w-full flex justify-center text-center">
+                        <h1 className="text-[4rem] sm:text-[6rem] lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter uppercase leading-[0.8] text-white font-sans">
+                            Kashyap <br /> Rathod
+                        </h1>
                     </div>
-
-                    {/* Middle Section: Massive Title & Right Context */}
-                    <div className="flex flex-col lg:flex-row justify-between items-end w-full relative z-10 -mt-20">
-                        {/* Massive "SEKO" style title */}
-                        <div className="overflow-visible w-full lg:w-auto mt-24 lg:mt-0 text-left">
-                            <h1 className="text-[4rem] sm:text-[6rem] lg:text-[10rem] xl:text-[12rem] font-bold tracking-tighter uppercase leading-[0.8] text-white">
-                                Kashyap <br /> Rathod
-                            </h1>
-                        </div>
-
-                        {/* Middle Right Text Blocks */}
-                        <div className="flex flex-col gap-12 lg:mb-24 lg:w-[400px] shrink-0 lg:pr-12 mt-12 lg:mt-0 items-end text-right">
-                            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
-                                Design starts here. <br /> Build impact. <br /> Move forward.
-                            </h2>
-                            <div className="text-[10px] font-semibold tracking-widest uppercase text-white/50">
-                                Next-Gen Experience <br /> Ecosystem
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Bottom Section: Circular Button & Details */}
-                    <div className="flex justify-end lg:justify-between items-end w-full lg:px-12 mt-12 lg:-mt-20 z-20">
-                        {/* Right Content - Circle button and trailing text */}
-                        <div className="flex items-center gap-12 lg:ml-auto">
-                            {/* Circular Button */}
-                            <div
-                                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                className="w-32 h-32 rounded-full bg-[#E5E5E5] flex items-center justify-center text-black font-bold uppercase tracking-widest text-xs cursor-pointer hover:bg-white transition-colors duration-300 pointer-events-auto"
-                            >
-                                View Work
-                            </div>
-
-                            {/* Far right micro terms */}
-                            <div className="hidden md:flex flex-col gap-4 text-[10px] font-semibold tracking-widest uppercase text-white/70 text-right mr-12 border-r-4 border-white/20 pr-4">
-                                <span>Human-Centered Protocol</span>
-                                <span>Enterprise Infra</span>
-                                <span>Layered Architecture</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </motion.div>
 
             </div>

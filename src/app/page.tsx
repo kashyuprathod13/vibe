@@ -4,6 +4,7 @@ import HomeAbout from "@/components/HomeAbout";
 import Projects from "@/components/Projects";
 import Partners from "@/components/Partners";
 import HomeProcess from "@/components/HomeProcess";
+import ScrollTicker from "@/components/ScrollTicker";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Partners />
       <Projects limit={3} />
       <HomeProcess />
+      <ScrollTicker />
     </main>
   );
 }
