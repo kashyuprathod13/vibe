@@ -19,7 +19,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Creative Director | Kashyap Rathod",
-  description: "High-end scrollytelling personal portfolio website.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
