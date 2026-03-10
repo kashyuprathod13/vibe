@@ -86,7 +86,7 @@ export const FinancialHero = ({
       {/* Removed the solid background gradient to allow ScrollyCanvas to show through */}
 
       <motion.div
-        className="relative container mx-auto flex min-h-[80vh] items-center justify-between px-6 py-20 lg:flex-row flex-col gap-12"
+        className="relative container mx-auto flex min-h-[60vh] md:min-h-[80vh] items-center justify-center lg:justify-between px-6 py-10 md:py-20 lg:flex-row flex-col gap-4 md:gap-8 lg:gap-12"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -119,7 +119,7 @@ export const FinancialHero = ({
 
         {/* Right: Card Images */}
         <motion.div
-          className="relative lg:w-1/2 h-full w-full flex items-center justify-center"
+          className="relative lg:w-1/2 h-[280px] md:h-[400px] lg:h-full w-full flex items-center justify-center mt-4 md:mt-0"
           variants={cardsVariants}
         >
           <a href={buttonLink} className="relative w-full h-full flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity">
@@ -129,7 +129,7 @@ export const FinancialHero = ({
               alt="Travel Moment 2"
               variants={cardItemVariants}
               whileHover={{ y: -10, rotate: -5, transition: { duration: 0.3 } }}
-              className="absolute h-48 md:h-80 rounded-2xl shadow-2xl object-cover transform rotate-[-6deg] translate-x-24"
+              className="absolute h-48 md:h-80 rounded-2xl shadow-2xl object-cover transform rotate-[-6deg] translate-x-12 md:translate-x-24"
             />
             {/* Front Card */}
             <motion.img
@@ -137,7 +137,7 @@ export const FinancialHero = ({
               alt="Travel Moment 1"
               variants={cardItemVariants}
               whileHover={{ y: -10, rotate: 5, transition: { duration: 0.3 } }}
-              className="absolute h-48 md:h-80 rounded-2xl shadow-2xl object-cover transform rotate-[6deg] -translate-x-16"
+              className="absolute h-48 md:h-80 rounded-2xl shadow-2xl object-cover transform rotate-[6deg] -translate-x-8 md:-translate-x-16"
             />
           </a>
         </motion.div>

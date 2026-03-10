@@ -38,19 +38,22 @@ export default function ScrollyCanvas() {
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         if (images.length === 0 || !canvasRef.current) return;
 
-        // Map 0 -> 1 progress to 0 -> FRAME_COUNT - 1
-        const frameIndex = Math.min(
-            FRAME_COUNT - 1,
-            Math.floor(latest * FRAME_COUNT)
-        );
+        requestAnimationFrame(() => {
+            if (!canvasRef.current) return;
+            const ctx = canvasRef.current.getContext("2d");
+            if (!ctx) return;
 
-        const ctx = canvasRef.current.getContext("2d");
-        if (!ctx) return;
+            // Map 0 -> 1 progress to 0 -> FRAME_COUNT - 1
+            const frameIndex = Math.min(
+                FRAME_COUNT - 1,
+                Math.floor(latest * FRAME_COUNT)
+            );
 
-        const img = images[frameIndex];
-        if (img && img.complete) {
-            renderToCanvas(ctx, img, canvasRef.current.width, canvasRef.current.height);
-        }
+            const img = images[frameIndex];
+            if (img && img.complete) {
+                renderToCanvas(ctx, img, canvasRef.current.width, canvasRef.current.height);
+            }
+        });
     });
 
     // Draw the correct frame as soon as images are ready or when navigating

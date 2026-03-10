@@ -36,8 +36,7 @@ export default function CustomCursor() {
                 target.tagName.toLowerCase() === 'a' ||
                 target.tagName.toLowerCase() === 'button' ||
                 target.closest('a') ||
-                target.closest('button') ||
-                window.getComputedStyle(target).cursor === 'pointer'
+                target.closest('button')
             ) {
                 setIsHovering(true);
             } else {

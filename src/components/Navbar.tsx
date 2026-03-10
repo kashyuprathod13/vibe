@@ -37,21 +37,31 @@ export default function Navbar() {
     }, [pathname]);
 
     useEffect(() => {
+        let ticking = false;
+        
         const handleScroll = () => {
-            // If we are not on the home page, the background should always be "past hero" style
-            if (pathname !== "/") {
-                setIsPastHero(true);
-                return;
-            }
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    // If we are not on the home page, the background should always be "past hero" style
+                    if (pathname !== "/") {
+                        setIsPastHero(true);
+                        ticking = false;
+                        return;
+                    }
 
-            const aboutSection = document.getElementById("about");
-            if (aboutSection) {
-                // Switch 50px before the About section hits the top
-                setIsPastHero(window.scrollY >= aboutSection.offsetTop - 50);
-            } else {
-                setIsPastHero(window.scrollY >= window.innerHeight * 4);
+                    const aboutSection = document.getElementById("about");
+                    if (aboutSection) {
+                        // Switch 50px before the About section hits the top
+                        setIsPastHero(window.scrollY >= aboutSection.offsetTop - 50);
+                    } else {
+                        setIsPastHero(window.scrollY >= window.innerHeight * 4);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
+        
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll(); // Check on mount
         return () => window.removeEventListener("scroll", handleScroll);
